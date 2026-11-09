@@ -1,0 +1,38 @@
+# Gradle and compiled output
+.gradle/
+/build/
+/*/build/
+bin/
+out/
+*.jar
+!/gradle/wrapper/gradle-wrapper.jar
+*.war
+*.ear
+
+# IDE files and logs
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.DS_Store
+Thumbs.db
+*.log
+
+# Local Minecraft runtime
+run/
+runs/
+/config/
+
+# Local project history, workspace settings, and publication files
+/.agents/
+/.codex/
+/.aws/
+/ORIGINAL_REQUEST.md
+/docs/history/
+/generated_images/
+/docs/release/mtg-base-library.png
+/dist/
