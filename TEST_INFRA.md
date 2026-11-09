@@ -2,12 +2,14 @@
 
 ## Full build
 
-Use JDK 25 and allow the wrapper and Maven dependencies to download. [gradle.properties](gradle.properties) defines the target versions.
+Use Java 17 or newer to start the wrapper. Gradle uses a detected JDK 25 or downloads one through Foojay. A fresh build needs access to download the Gradle distribution, plugins, dependencies, and any missing toolchain. [gradle.properties](gradle.properties) defines the target versions.
 
 ```sh
 java -version
 ./gradlew clean build
 ```
+
+Run `./gradlew -q :fabric:javaToolchains` to list the Java installations Gradle detects. For a manually installed JDK 25 outside the default search locations, set `JAVA_HOME` to its installation directory before building.
 
 Use `./gradlew :forge:build` for a Forge-only build. Use `./gradlew test` for the complete headless suite. The `:common:test` task also requests the three loader JARs for artifact tests.
 

@@ -25,7 +25,7 @@ The shared engines and expansion startup have passed headless tests. The Fabric,
 
 ## Build
 
-Use JDK 25 with the checked-in Gradle wrapper. The shared library targets Java 21 bytecode. Loader modules target Java 25 for Minecraft 26.3.
+Run the checked-in Gradle wrapper with Java 17 or newer. Gradle uses a detected JDK 25 or downloads one through Foojay on the first build that needs it. The shared library targets Java 21 bytecode. Loader modules target Java 25 for Minecraft 26.3.
 
 ```sh
 java -version
