@@ -25,7 +25,7 @@ The shared engines and expansion startup have passed headless tests. The Fabric,
 
 ## Build
 
-Use JDK 25 with the checked-in Gradle wrapper. Java sources target Java 21 bytecode. Minecraft 26.3 runs on Java 25.
+Use JDK 25 with the checked-in Gradle wrapper. The shared library targets Java 21 bytecode. Loader modules target Java 25 for Minecraft 26.3.
 
 ```sh
 java -version

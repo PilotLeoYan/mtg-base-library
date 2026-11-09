@@ -13,7 +13,7 @@ Start with [PROJECT.md](PROJECT.md) for the current evidence and next work. Use 
 
 - Keep Minecraft and loader imports in loader modules. Keep client-only code off dedicated-server class loading paths.
 - Preserve existing API behavior and stable IDs. Add extension hooks in the shared module and put the corresponding Minecraft integration in each supported loader.
-- Treat [`gradle.properties`](gradle.properties) as the version reference and source code as the interface reference. Build with JDK 25 and target Java 21 bytecode.
+- Treat [`gradle.properties`](gradle.properties) as the version reference and source code as the interface reference. Build with JDK 25. Target Java 21 bytecode in `common` and Java 25 in the loader modules.
 - Label verification by layer. Report headless domain tests, loader build results, and actual Minecraft client and server tests separately. Packaging checks and platform mocks cannot establish runtime support.
 - Validate release binaries from a fresh build. See [TEST_INFRA.md](TEST_INFRA.md) and the [Forge release handoff](docs/release/README.md).
 - Update [PROJECT.md](PROJECT.md) when implementation or verification status changes. Record commands, versions, and outcomes that the next agent needs. Keep old agent handoffs as historical references.

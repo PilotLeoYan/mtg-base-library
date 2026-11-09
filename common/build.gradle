@@ -2,6 +2,10 @@ dependencies {
     // Pure MTG domain logic & platform neutral interfaces
 }
 
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
 tasks.named('jar', Jar) {
     archiveBaseName = 'mtg-common'
 }
