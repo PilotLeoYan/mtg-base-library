@@ -1,0 +1,11 @@
+dependencies {
+    implementation project(':common')
+    compileOnly("net.minecraftforge:javafmllanguage:${minecraft_version}-${forge_version}") { transitive = false }
+    compileOnly("net.minecraftforge:fmlloader:${minecraft_version}-${forge_version}") { transitive = false }
+}
+
+tasks.named('jar', Jar) {
+    archiveBaseName = 'mtg-forge'
+    from project(':common').sourceSets.main.output
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

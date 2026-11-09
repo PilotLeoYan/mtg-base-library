@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(':common')
+    compileOnly("net.neoforged.fancymodloader:loader:${neoforge_fml_version}") { transitive = false }
+}
+
+tasks.named('jar', Jar) {
+    archiveBaseName = 'mtg-neoforge'
+    from project(':common').sourceSets.main.output
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

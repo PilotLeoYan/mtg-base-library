@@ -1,0 +1,11 @@
+dependencies {
+    // Pure MTG domain logic & platform neutral interfaces
+}
+
+tasks.named('jar', Jar) {
+    archiveBaseName = 'mtg-common'
+}
+
+tasks.named('test', Test) {
+    dependsOn 'jar', ':fabric:jar', ':neoforge:jar', ':forge:jar'
+}

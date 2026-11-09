@@ -1,0 +1,72 @@
+plugins {
+    id 'base'
+}
+
+allprojects {
+    group = property('mod_group')
+    version = property('mod_version')
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(project.property('java_version').toString().toInteger())
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+        options.release = 21
+    }
+
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'Fabric'
+            url = 'https://maven.fabricmc.net/'
+        }
+        maven {
+            name = 'NeoForged'
+            url = 'https://maven.neoforged.net/releases'
+        }
+        maven {
+            name = 'Forge'
+            url = 'https://maven.minecraftforge.net/'
+        }
+    }
+
+    dependencies {
+        testImplementation platform("org.junit:junit-bom:${property('junit_version')}")
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+        testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    }
+
+    test {
+        useJUnitPlatform()
+        systemProperty 'java.awt.headless', 'true'
+        testLogging {
+            events 'passed', 'skipped', 'failed'
+            showStandardStreams = false
+        }
+    }
+
+    // Process resources token expansion (${version}, etc.)
+    tasks.named('processResources', ProcessResources) {
+        def replaceProperties = [
+            version: project.version,
+            minecraft_version: project.property('minecraft_version'),
+            java_version: project.property('java_version'),
+            fabric_loader_version: project.property('fabric_loader_version'),
+            forge_version: project.property('forge_version'),
+            neoforge_version: project.property('neoforge_version')
+        ]
+        inputs.properties replaceProperties
+
+        filesMatching(['fabric.mod.json', 'META-INF/neoforge.mods.toml', 'META-INF/mods.toml']) {
+            expand replaceProperties
+        }
+    }
+}

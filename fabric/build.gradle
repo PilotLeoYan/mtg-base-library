@@ -1,0 +1,10 @@
+dependencies {
+    implementation project(':common')
+    compileOnly("net.fabricmc:fabric-loader:${fabric_loader_version}") { transitive = false }
+}
+
+tasks.named('jar', Jar) {
+    archiveBaseName = 'mtg-fabric'
+    from project(':common').sourceSets.main.output
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}

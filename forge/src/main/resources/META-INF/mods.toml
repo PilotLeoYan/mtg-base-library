@@ -1,0 +1,25 @@
+modLoader="javafml"
+loaderVersion="[66,)"
+license="MIT"
+services=["com.mtg.api.IExpansionSet", "com.mtg.platform.IPlatformHelper", "com.mtg.platform.INetworkHelper"]
+
+[[mods]]
+modId="mtg"
+version="${version}"
+displayName="MTG Base Library"
+description='''Shared card rules, registries and expansion hooks for independent MTG add-ons.'''
+authors="LeoYan"
+
+[[dependencies.mtg]]
+modId="forge"
+mandatory=true
+versionRange="[${forge_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.mtg]]
+modId="minecraft"
+mandatory=true
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="BOTH"
